@@ -19,7 +19,6 @@ void loop() {
   long duration;
   int distance;
   
-  // Send trig pulse
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -28,7 +27,7 @@ void loop() {
 
   duration = pulseIn(echoPin, HIGH);
   
-  // Calculate distance in cm
+  // Izracunaj sve u centimetrima
   distance = duration * 0.034 / 2;
   
   Serial.print("Distance: ");
@@ -42,10 +41,10 @@ void loop() {
   }
   
   if(distance < buzzerThreshold) {
-    tone(buzzerPin, 1000); // 1 kHz tone
+    tone(buzzerPin, 1000);
   } else {
     noTone(buzzerPin);
   }
 
-  delay(100); // small delay to stabilize readings
+  delay(100);
 }
